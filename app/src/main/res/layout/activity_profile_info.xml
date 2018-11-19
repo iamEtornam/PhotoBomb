@@ -6,4 +6,101 @@
 	android:layout_height="match_parent"
 	tools:context=".ui.ProfileInfoActivity">
 
+	<com.google.android.material.appbar.AppBarLayout
+		android:id="@+id/appBarLayout2"
+		android:layout_width="match_parent"
+		android:layout_height="77dp">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="77dp"
+			android:layout_gravity="center"
+			android:background="?attr/colorPrimary"
+			android:gravity="center"
+			android:minHeight="?attr/actionBarSize"
+			android:theme="?attr/actionBarTheme">
+
+			<TextView
+				android:id="@+id/toolbarTitle"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center|bottom"
+				android:paddingBottom="15dp"
+				android:text="@string/app_name"
+				android:textAppearance="?android:textAppearanceMedium"
+				android:textColor="@color/white" />
+
+		</androidx.appcompat.widget.Toolbar>
+	</com.google.android.material.appbar.AppBarLayout>
+
+	<com.mikhaellopez.circularimageview.CircularImageView
+		android:id="@+id/profileImage"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="30dp"
+		android:layout_marginEnd="8dp"
+		android:contentDescription="@string/avatar"
+		android:src="@drawable/ic_person"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+
+	<androidx.emoji.widget.EmojiEditText
+		android:id="@+id/fullnameEdt"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="8dp"
+		android:hint="Etornam Sunu"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+	<androidx.emoji.widget.EmojiEditText
+		android:id="@+id/usernameEdt"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="10dp"
+		android:layout_marginEnd="8dp"
+		android:hint="_regnex"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/fullnameEdt" />
+
+	<EditText
+		android:id="@+id/locationEdt"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="10dp"
+		android:layout_marginEnd="8dp"
+		android:hint="Adenta SDA, Ghana"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/usernameEdt" />
+
+	<br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+		android:id="@+id/saveBtn"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_marginStart="32dp"
+		android:layout_marginTop="25dp"
+		android:layout_marginEnd="32dp"
+		android:background="@drawable/circular_border_shape"
+		android:text="@string/save"
+		android:textColor="@android:color/white"
+		app:finalCornerAngle="50dp"
+		app:initialCornerAngle="0dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/locationEdt"
+		app:spinning_bar_color="@android:color/holo_blue_bright"
+		app:spinning_bar_padding="8dp"
+		app:spinning_bar_width="4dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import co.etornam.photobomb.R
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 	override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 		when {
 			item?.itemId == R.id.menu_account -> {
-				Toast.makeText(this, "account", Toast.LENGTH_SHORT).show()
+				startActivity(Intent(applicationContext, ProfileInfoActivity::class.java))
 			}
 			item?.itemId == android.R.id.home -> {
 				val bottomNavDrawerFragment = BottomNavigationFragment()

@@ -10,4 +10,5 @@
 	<string name="avatar">avatar</string>
 	<string name="upload_image">upload Image</string>
 	<string name="log_out">Logout</string>
+	<string name="save">Save</string>
 </resources>
