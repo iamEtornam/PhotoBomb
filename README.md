@@ -1,5 +1,5 @@
 # PhotoBomb
-Journal App is an application where in users can pen down their thoughts and feelings. 
+PhotoBomb is a basic android app developed in Kotlin to showcase a use case of Firebase's firestore and Storage. 
 
 ## Art
 <img align="left" src="https://github.com/RegNex/photoBomb/blob/master/art/1.png" width="200" height="400"/>
