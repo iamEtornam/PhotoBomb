@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -37,6 +38,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'com.google.android.material:material:1.1.0-alpha01'
     implementation 'com.android.support:support-emoji:28.0.0'
+
+    //firebase ui libraries
+    implementation 'com.firebaseui:firebase-ui-firestore:4.2.1'
+    implementation 'com.firebaseui:firebase-ui-auth:4.2.1'
+    implementation 'com.firebaseui:firebase-ui-storage:4.2.1'
 
     implementation 'com.github.maayyaannkk:ImagePicker:1.0.1'
     implementation 'com.github.NaimishTrivedi:FBToast:1.0'

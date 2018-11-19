@@ -10,6 +10,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import co.etornam.photobomb.R
 import co.etornam.photobomb.fragment.BottomNavigationFragment
+import co.etornam.photobomb.secure.SignUpActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main_activity.*
 
@@ -46,6 +48,14 @@ class MainActivity : AppCompatActivity() {
 			}
 		}
 		return true
+	}
+
+	override fun onStart() {
+		super.onStart()
+		val auth: FirebaseAuth = FirebaseAuth.getInstance()
+		if (auth.currentUser == null) {
+			startActivity(Intent(applicationContext, SignUpActivity::class.java))
+		}
 	}
 
 }
