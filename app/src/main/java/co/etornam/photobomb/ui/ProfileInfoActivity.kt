@@ -49,6 +49,13 @@ class ProfileInfoActivity : AppCompatActivity() {
 					bitmap)
 		}
 		circularProgressButton.startAnimation()
+
+
+
+
+
+
+
 		with(Handler()) {
 			postDelayed(doneAnimationRunnable, 3000)
 			postDelayed({ circularProgressButton.revertAnimation() }, 4000)
