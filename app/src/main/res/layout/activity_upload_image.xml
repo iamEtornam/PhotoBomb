@@ -6,33 +6,9 @@
 	android:layout_height="match_parent"
 	tools:context=".ui.UploadImageActivity">
 
-	<com.google.android.material.appbar.AppBarLayout
-		android:id="@+id/appBarLayout"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-
-		<androidx.appcompat.widget.Toolbar
-			android:id="@+id/toolbar"
-			android:layout_width="match_parent"
-			android:layout_height="77dp"
-			android:layout_gravity="center"
-			android:background="?attr/colorPrimary"
-			android:gravity="center"
-			android:minHeight="?attr/actionBarSize"
-			android:theme="?attr/actionBarTheme">
-
-			<TextView
-				android:id="@+id/toolbarTitle"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:gravity="center|bottom"
-				android:paddingBottom="15dp"
-				android:text="@string/app_name"
-				android:textAppearance="?android:textAppearanceMedium"
-				android:textColor="@color/white" />
-
-		</androidx.appcompat.widget.Toolbar>
-	</com.google.android.material.appbar.AppBarLayout>
+	<include
+		android:id="@+id/toolbar"
+		layout="@layout/toolbar_layout" />
 
 	<ImageView
 		android:id="@+id/imgView"
@@ -44,7 +20,7 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+		app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 	<View
 		android:id="@+id/divider"
@@ -59,36 +35,28 @@
 		app:layout_constraintTop_toBottomOf="@+id/imgView" />
 
 
-	<LinearLayout
+	<br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
 		android:id="@+id/uploadButton"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_marginStart="32dp"
+		android:layout_marginTop="25dp"
+		android:layout_marginEnd="32dp"
+		android:background="@drawable/circular_border_shape"
+		android:text="@string/save"
+		android:textColor="@android:color/white"
+		app:finalCornerAngle="50dp"
+		app:initialCornerAngle="0dp"
+		app:layout_constraintVertical_bias="0.0"
+		app:spinning_bar_color="@android:color/white"
+		app:spinning_bar_padding="8dp"
 		style="@style/Widget.MaterialComponents.Button"
-		android:layout_width="wrap_content"
-		android:layout_height="45dp"
-		android:layout_marginStart="8dp"
-		android:layout_marginTop="16dp"
-		android:layout_marginEnd="8dp"
 		android:layout_marginBottom="8dp"
-		android:background="@color/colorPrimary"
 		android:orientation="horizontal"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/divider"
-		app:layout_constraintVertical_bias="0.0">
-
-		<com.github.ybq.android.spinkit.SpinKitView
-			android:id="@+id/progressIndicator"
-			style="@style/SpinKitView.Large.Wave"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:indeterminate="true"
-			android:visibility="gone"/>
-
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/upload_image"
-			android:textColor="@color/white" />
-	</LinearLayout>
+		app:spinning_bar_width="4dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

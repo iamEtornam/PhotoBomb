@@ -1,36 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="77dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:theme="?attr/actionBarTheme">
-
-        <TextView
-            android:id="@+id/toolbarTitle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/app_name"
-            android:gravity="center|bottom"
-            android:textColor="@color/white"
-            android:paddingBottom="15dp"
-            android:textAppearance="?android:textAppearanceMedium"/>
-
-    </androidx.appcompat.widget.Toolbar>
+	<include
+		android:id="@+id/include"
+		layout="@layout/toolbar_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp" />
+	    android:layout_height="wrap_content" />
 
 </LinearLayout>

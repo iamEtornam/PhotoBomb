@@ -22,7 +22,6 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
@@ -44,11 +43,7 @@ class ProfileInfoActivity : AppCompatActivity() {
 		storage = FirebaseStorage.getInstance()
 		mAuth = FirebaseAuth.getInstance()
 		mDatabase = FirebaseFirestore.getInstance()
-		val settings: FirebaseFirestoreSettings = FirebaseFirestoreSettings
-				.Builder()
-				.setTimestampsInSnapshotsEnabled(true)
-				.build()
-		mDatabase.firestoreSettings = settings
+
 
 		fetchUserProfileInfo()
 

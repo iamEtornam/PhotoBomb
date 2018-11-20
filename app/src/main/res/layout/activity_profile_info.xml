@@ -6,33 +6,9 @@
 	android:layout_height="match_parent"
 	tools:context=".ui.ProfileInfoActivity">
 
-	<com.google.android.material.appbar.AppBarLayout
-		android:id="@+id/appBarLayout2"
-		android:layout_width="match_parent"
-		android:layout_height="77dp">
-
-		<androidx.appcompat.widget.Toolbar
-			android:id="@+id/toolbar"
-			android:layout_width="match_parent"
-			android:layout_height="77dp"
-			android:layout_gravity="center"
-			android:background="?attr/colorPrimary"
-			android:gravity="center"
-			android:minHeight="?attr/actionBarSize"
-			android:theme="?attr/actionBarTheme">
-
-			<TextView
-				android:id="@+id/toolbarTitle"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:gravity="center|bottom"
-				android:paddingBottom="15dp"
-				android:text="@string/app_name"
-				android:textAppearance="?android:textAppearanceMedium"
-				android:textColor="@color/white" />
-
-		</androidx.appcompat.widget.Toolbar>
-	</com.google.android.material.appbar.AppBarLayout>
+	<include
+		android:id="@+id/include"
+		layout="@layout/toolbar_layout" />
 
 	<com.mikhaellopez.circularimageview.CircularImageView
 		android:id="@+id/profileImage"
@@ -45,7 +21,7 @@
 		android:src="@drawable/ic_person"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+		app:layout_constraintTop_toBottomOf="@+id/include" />
 
 	<androidx.emoji.widget.EmojiEditText
 		android:id="@+id/fullnameEdt"
@@ -99,7 +75,7 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/locationEdt"
-		app:spinning_bar_color="@android:color/holo_blue_bright"
+		app:spinning_bar_color="@android:color/white"
 		app:spinning_bar_padding="8dp"
 		app:spinning_bar_width="4dp" />
 

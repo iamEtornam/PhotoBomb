@@ -10,7 +10,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="250dp"
 			android:contentDescription="@string/avatar"
-			android:src="@drawable/ic_add_a_photo_black" />
+			android:scaleType="centerCrop"
+			android:src="@drawable/ic_placeholder" />
 
 		<com.bosphere.fadingedgelayout.FadingEdgeLayout
 			android:layout_width="match_parent"

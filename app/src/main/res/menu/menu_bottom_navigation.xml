@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/friends"
@@ -12,6 +11,6 @@
         android:title="@string/favourites" />
     <item
         android:id="@+id/logout"
-        android:icon="@drawable/ic_settings_black_24dp"
+	    android:icon="@drawable/ic_exit_to_app"
         android:title="@string/log_out" />
 </menu>

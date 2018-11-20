@@ -26,7 +26,8 @@
 		</activity>
 		<activity android:name=".ui.UploadImageActivity" />
 		<activity android:name=".secure.SignUpActivity" />
-		<activity android:name=".ui.ProfileInfoActivity"></activity>
+		<activity android:name=".ui.ProfileInfoActivity" />
+		<activity android:name=".ui.UserDetailsActivity"></activity>
 	</application>
 
 </manifest>
