@@ -1,5 +1,6 @@
 package co.etornam.photobomb.ui
 
+import android.Manifest
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -20,20 +21,26 @@ import co.etornam.photobomb.model.Post
 import co.etornam.photobomb.secure.SignUpActivity
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.kotlinpermissions.KotlinPermissions
 import com.ldoublem.thumbUplib.ThumbUpView
 import com.mikhaellopez.circularimageview.CircularImageView
 import com.squareup.picasso.Picasso
+import com.tfb.fbtoast.FBToast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main_activity.*
+import kotlinx.android.synthetic.main.single_row_layout.*
 
 
 class MainActivity : AppCompatActivity() {
 	private var adapter: FirestoreRecyclerAdapter<Post, PostViewHolder>? = null
 	lateinit var mDatabase: FirebaseFirestore
+	lateinit var mAuth: FirebaseAuth
 
 	@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +48,22 @@ class MainActivity : AppCompatActivity() {
 		setContentView(R.layout.activity_main)
 		setSupportActionBar(bottom_appbar)
 
+		KotlinPermissions.with(this) // where this is an FragmentActivity instance
+				.permissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+				.onAccepted { permissions ->
+					//List of accepted permissions
+				}
+				.onDenied { permissions ->
+					FBToast.warningToast(applicationContext, "This App will not function without the Denied Permission", FBToast.LENGTH_SHORT)
+					finish()
+				}
+				.onForeverDenied { permissions ->
+
+				}
+				.ask()
+
+
+		mAuth = FirebaseAuth.getInstance()
 		mDatabase = FirebaseFirestore.getInstance()
 		val settings: FirebaseFirestoreSettings = FirebaseFirestoreSettings
 				.Builder()
@@ -77,6 +100,20 @@ class MainActivity : AppCompatActivity() {
 				var r: DocumentSnapshot = snapshots.getSnapshot(position)
 				holder.setIsRecyclable(false)
 				Picasso.get().load(model.imageUrl).into(holder.postImg)
+
+				try {
+					val userLikesRef = mDatabase.collection("photoBlog").document(r.id).collection("Likes").document(mAuth.currentUser!!.uid)
+					val document = Tasks.await(userLikesRef.get())
+					if (document.exists()) {
+						likeBtn.Like()
+					} else {
+						likeBtn.UnLike()
+					}
+
+				} catch (e: Throwable) {
+
+				}
+
 				holder.postUsername.setOnClickListener {
 					val intent = Intent(this@MainActivity, UserDetailsActivity::class.java)
 					intent.putExtra("userId", model.currentUserId)
@@ -84,6 +121,18 @@ class MainActivity : AppCompatActivity() {
 				}
 				holder.postLike.setOnClickListener {
 					Toast.makeText(this@MainActivity, "like", Toast.LENGTH_SHORT).show()
+
+					mDatabase.collection("photoBlog").document(r.id).collection("Likes")
+							.document(mAuth.currentUser!!.uid).get().addOnCompleteListener {
+								if (!it.result!!.exists()) {
+									val objectsMap = hashMapOf<String, Any>()
+									objectsMap.put("timeStamp", FieldValue.serverTimestamp())
+									mDatabase.collection("Posts").document(r.id).collection("Likes").document(mAuth.currentUser!!.uid).set(objectsMap)
+								} else {
+									mDatabase.collection("Posts").document(r.id).collection("Likes").document(mAuth.currentUser!!.uid).delete()
+
+								}
+							}
 				}
 			}
 
