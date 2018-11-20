@@ -16,7 +16,7 @@ cd folder/to/clone-into/
 ```
 
 ```
-git clone https://github.com/RegNex/photoBomb.git
+git clone https://github.com/RegNex/PhotoBomb.git
 ```
 
 Then 
